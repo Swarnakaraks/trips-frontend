@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className='flex items-center gap-10'>
       <nav className='space-x-8 text-gray-600 font-medium [&>a]:hover:text-black [&>a]:hover:underline'>
       <a href="/">Home</a>
-      <a href="/home">About</a>
+      <a href="/about">About</a>
       <a href="/help">Help</a>
       <a href="/contact">Contact</a>
       </nav>

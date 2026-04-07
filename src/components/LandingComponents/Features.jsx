@@ -27,7 +27,7 @@ const Features = () => {
     }
 ]
   return (
-   <section>
+   <section className='px-20 py-10'>
     <div className=''>
         <h1 className='text-5xl font-bold text-center mb-10 mt-20'>Our Features</h1>
     </div>
