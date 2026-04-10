@@ -11,7 +11,7 @@ const FAQ = () => {
     <section className="px-20 py-10">
       <div>
         <h1 className="text-5xl font-bold text-center mb-10 mt-20">
-          Frequently Asked Questions
+          Frequently Asked <span className="text-blue-600">Questions</span>
         </h1>
       </div>
 
@@ -25,7 +25,7 @@ const FAQ = () => {
           {/* Item 1 */}
           <AccordionItem
             value="item-1"
-            className="border border-gray-200 rounded-2xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
+            className="border border-gray-200 rounded-xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
           >
             <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
               What services do you provide?
@@ -39,7 +39,7 @@ const FAQ = () => {
           {/* Item 2 */}
           <AccordionItem
             value="item-2"
-            className="border border-gray-200 rounded-2xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
+            className="border border-gray-200 rounded-xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
           >
             <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
               How fast is your service?
@@ -53,7 +53,7 @@ const FAQ = () => {
           {/* Item 3 */}
           <AccordionItem
             value="item-3"
-            className="border border-gray-200 rounded-2xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
+            className="border border-gray-200 rounded-xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
           >
             <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
               Is my data secure?
@@ -67,7 +67,7 @@ const FAQ = () => {
           {/* Item 4 */}
           <AccordionItem
             value="item-4"
-            className="border border-gray-200 rounded-2xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
+            className="border border-gray-200 rounded-xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
           >
             <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
               Do you offer 24/7 support?
@@ -81,7 +81,7 @@ const FAQ = () => {
           {/* Item 5 */}
           <AccordionItem
             value="item-5"
-            className="border border-gray-200 rounded-2xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
+            className="border border-gray-200 rounded-xl px-6 bg-white shadow-sm hover:shadow-md transition-all"
           >
             <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
               Can I customize the features?

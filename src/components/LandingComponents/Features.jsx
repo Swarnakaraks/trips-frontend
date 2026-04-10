@@ -27,9 +27,9 @@ const Features = () => {
     }
 ]
   return (
-   <section className='px-20 py-10'>
+   <section className='px-20 py-10 bg-blue-50'>
     <div className=''>
-        <h1 className='text-5xl font-bold text-center mb-10 mt-20'>Our Features</h1>
+        <h1 className='text-5xl font-bold text-center mb-10'>Our <span className='text-blue-600'>Features</span></h1>
     </div>
 
     <div className='grid grid-cols-4 gap-4'>
