@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CustomButton from './common/CustomButton'
 
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
 

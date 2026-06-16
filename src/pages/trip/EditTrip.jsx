@@ -1,10 +1,11 @@
-import TripForm from '@/components/common/TripForm'
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import useApi from '@/hooks/useApi'
 import { Edit, X } from 'lucide-react'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Button } from '../../components/ui/button'
+import TripForm from '../../components/Common/TripForm'
 
 const EditTrip = () => {
 
