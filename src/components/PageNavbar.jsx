@@ -21,7 +21,7 @@ const PageNavbar = () => {
         transition-all duration-300"
     >
       {/* LEFT */}
-      <a href="#home">
+      <a href="/">
       <div className="flex items-center cursor-pointer group h-12">
         <img src="/logo.png" className="h-13 w-auto object-contain" />
 
