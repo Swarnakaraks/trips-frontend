@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import useAuth from '@/hooks/useAuth'
 import { toast } from "sonner";
 import api from '@/api/axios';
@@ -91,7 +91,7 @@ const Login = () => {
              <CardTitle>
               
               <div className="absolute top-0 left-0">
-                <a href="/"><ArrowLeft className="text-gray-500"/></a>
+                <Link to="/"><ArrowLeft className="text-gray-500"/></Link>
             
                   </div>
                  <div className="flex items-center justify-center h-12">
@@ -176,7 +176,7 @@ const Login = () => {
              <div>
              <p className="text-center text-sm text-gray-500 mt-3">
                Don't have an account?{" "}
-              <a href="/register" className="text-orange-600 font-medium cursor-pointer hover:underline">Register</a>
+              <Link to="/register" className="text-orange-600 font-medium cursor-pointer hover:underline">Register</Link>
              </p>
              </div>
            </CardContent>

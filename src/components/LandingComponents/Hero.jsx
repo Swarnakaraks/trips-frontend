@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 /* slides data */
 const slides = [
@@ -48,7 +49,7 @@ export default function TripHero() {
   const active = slides[current];
 
   return (
-    <section id="home" className="relative h-screen overflow-hidden flex items-center text-white justify-center">
+    <section id="home" className="relative h-[50vh] sm:h-[70vh] md:h-screen overflow-hidden flex items-center text-white justify-center">
 
       {/* background */}
       <div className="absolute inset-0">
@@ -81,13 +82,13 @@ export default function TripHero() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: -25, filter: "blur(6px)" }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col justify-center items-center"
+              className="flex flex-col justify-center items-center "
             >
 
               {/* title */}
-              <h1 className=" relative text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold ">
+              <h1 className=" relative text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mt-12 md:mt-0">
                 <div>{active.title}</div>
-                <div className=" text-8xl bg-linear-to-r from-orange-600 to-orange-400 bg-clip-text text-transparent">
+                <div className=" text-5xl md:text-8xl bg-linear-to-r from-orange-600 to-orange-400 bg-clip-text text-transparent">
                   {active.script}
                 </div>
               </h1>
@@ -99,13 +100,13 @@ export default function TripHero() {
 
               {/* buttons */}
               <div className="flex flex-wrap text-white gap-8 items-center justify-center mt-10">
-            <a href="/login" className="flex justify-center items-center overflow-hidden group rounded-full bg-linear-to-r from-blue-600 to-cyan-500 px-6 py-2 text-[15px] font-semibold text-white shadow-md transition hover:scale-105 duration-300">
+            <Link to="/login" className="flex justify-center items-center overflow-hidden group rounded-full bg-linear-to-r from-blue-600 to-cyan-500 px-6 py-2 text-[15px] font-semibold text-white shadow-md transition hover:scale-105 duration-300">
             <span >
               Start Journey
             </span>
               <ArrowRight className="w-6 h-6 -rotate-30 group-hover:ml-0.5 group-hover:mb-0.5 duration-300" />
 
-            </a>
+            </Link>
           </div>
 
             </motion.div>

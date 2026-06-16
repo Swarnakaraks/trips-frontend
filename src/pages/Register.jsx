@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import useAuth from '@/hooks/useAuth'
 import { toast } from "sonner";
 import api from '@/api/axios';
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 const formSchema = z
@@ -92,7 +92,7 @@ const Register = () => {
         <CardHeader className="text-center space-y-2 relative">
           <CardTitle >
             <div className="absolute top-0 left-0">
-                <a href="/"><ArrowLeft className="text-gray-500"/></a>
+                <Link to="/"><ArrowLeft className="text-gray-500"/></Link>
             </div>
             <div className="flex items-center justify-center h-12">
         <img src="/logo.png" className="h-13 w-auto object-contain" />
@@ -221,7 +221,7 @@ const Register = () => {
           {/* FOOTER */}
           <p className="text-center text-sm text-gray-500 mt-3">
             Already have an account?{" "}
-           <a href="/login" className="text-orange-600 font-medium cursor-pointer hover:underline">Signin</a>
+           <Link to="/login" className="text-orange-600 font-medium cursor-pointer hover:underline">Signin</Link>
           </p>
         </CardContent>
       </Card>

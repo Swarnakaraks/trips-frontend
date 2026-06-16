@@ -1,76 +1,129 @@
-import React, { useEffect, useState } from 'react'
-import CustomButton from './Common/CustomButton'
-
+import React, { useEffect, useState } from "react";
+import { House, Info, CircleHelp, Phone } from "lucide-react";
+import CustomButton from "./Common/CustomButton";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80)
-    }
+      setScrolled(window.scrollY > 80);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-   const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Help", href: "/help" },
-  { name: "Contact", href: "#contact" },
-];
+  const navLinks = [
+    { name: "Home", to: "/", icon: House },
+    { name: "About", to: "/about", icon: Info },
+    { name: "Help", to: "/help", icon: CircleHelp },
+    { name: "Contact", to: "#contact", icon: Phone },
+  ];
 
   return (
-    <header
-      className={`
-        fixed top-0 left-0 w-full z-50
-        px-10 md:px-20 py-4
-        flex justify-between items-center
-        transition-all duration-300
+    <>
+      <header
+        className={`
+          fixed top-0 left-0 w-full z-50
+          px-4 sm:px-6 md:px-10 lg:px-20 py-4
+          flex justify-between items-center
+          transition-all duration-300
 
-        ${scrolled
-          ? 'bg-white shadow-lg text-black'
-          : 'bg-transparent text-white backdrop-blur-sm'
-        }
-      `}
-    >
-      {/* LEFT */}
-      <a href="/">
-      <div className="flex items-center cursor-pointer group h-12">
-        <img src="/logo.png" className="h-13 w-auto object-contain" />
+          ${
+            scrolled
+              ? "bg-white shadow-lg text-black"
+              : "bg-transparent text-white backdrop-blur-sm"
+          }
+        `}
+      >
+        {/* LEFT */}
+        <Link to="/">
+          <div className="flex items-center cursor-pointer group h-12">
+            <img
+              src="/logo.png"
+              alt="TripBridge"
+              className="h-10 md:h-13 w-auto object-contain"
+            />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-          Trip
-          <span className="bg-linear-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-            Bridge
-          </span>
-        </h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+              Trip
+              <span className="bg-linear-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                Bridge
+              </span>
+            </h1>
+          </div>
+        </Link>
+
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex items-center gap-8 font-medium">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.to}
+              className="relative group hover:text-blue-500 transition-colors duration-300"
+            >
+              {link.name}
+
+              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-500 rounded-full transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* RIGHT */}
+        <div>
+          <Link to="/login">
+            <CustomButton text="Book Now" />
+
+          </Link>
+         
+        </div>
+      </header>
+
+      {/* MOBILE NAVIGATION */}
+      <div
+        className={`
+          md:hidden fixed bottom-0 left-0 right-0 z-50
+          backdrop-blur-xl border-t
+          transition-all duration-300
+
+          ${
+            scrolled
+              ? "bg-white/95 border-gray-200"
+              : "bg-white/10 border-white/20"
+          }
+        `}
+      >
+        <div className="grid grid-cols-4 h-16">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`
+                  flex flex-col items-center justify-center gap-1
+                  transition-all duration-300
+
+                  ${
+                      "text-gray-700 hover:text-blue-600 bg-white"
+                    
+                  }
+                `}
+              >
+                <Icon size={22} />
+                <span className="text-[11px] font-medium">
+                  {link.name}
+                </span>
+              </a>
+            );
+          })}
+        </div>
       </div>
-</a>
+    </>
+  );
+};
 
-   <nav className="flex items-center gap-8 font-medium ">
-  {navLinks.map((link) => (
-    <a
-      key={link.name}
-      href={link.href}
-      className="relative group hover:text-blue-500 transition-colors duration-300"
-    >
-      {link.name}
-
-      <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-500 rounded-full transition-all duration-300 group-hover:w-full"></span>
-    </a>
-  ))}
-</nav>
-
-      {/* RIGHT */}
-      <div>
-        <a href="/login">
-          <CustomButton text="Book Now" />
-        </a>
-      </div>
-    </header>
-  )
-}
-
-export default Navbar
+export default Navbar;

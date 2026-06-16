@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { Button } from "../ui/button";
 import { Plane, Users, Star, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   Avatar,
   AvatarFallback,
@@ -38,9 +39,9 @@ const About = () => {
       <div className="grid lg:grid-cols-2 gap-20 items-center">
         <div className="relative flex justify-center"
         >
-          <div className="absolute top-5 left-18 border-dashed rounded-2xl w-100 h-125 border-2 border-orange-500 bg-blue"></div>
+          <div className="absolute top-5 left-18 border-dashed rounded-2xl w-70 h-75  md:w-100 md:h-125 border-2 border-orange-500 bg-blue"></div>
 
-          <div className="group relative w-100 h-125 rounded-2xl overflow-hidden duration-700">
+          <div className="group relative w-70 h-75 md:w-100 md:h-125 rounded-2xl overflow-hidden duration-700">
             <img
               src="/pic34.jpg"
               alt=""
@@ -48,7 +49,7 @@ const About = () => {
             />
           </div>
 
-          <div className="group absolute bottom-5 right-0 w-40 h-50 rounded-2xl overflow-hidden border-8 border-white duration-700">
+          <div className="group absolute bottom-5 right-0 w-20 h-30 md:w-40 md:h-50 rounded-2xl overflow-hidden border-8 border-white duration-700">
             <img
               src="/pic22.jpg"
               alt=""
@@ -70,8 +71,8 @@ const About = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div>
-          <p className="uppercase tracking-[5px] text-orange-500 font-semibold mb-4">
+        <div className="w-full min-w-0">
+          <p className="uppercase tracking-[5px] text-orange-500 font-semibold mb-4 ">
             About Company
           </p>
 
@@ -79,20 +80,20 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-5xl lg:text-4xl font-black leading-tight text-gray-900">
+          className=" text-2xl sm:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
             We're Number One Travel
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
+            <span className="block text-3xl text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400 mt-2">
               Adventure Company
             </span>
           </motion.h1>
 
-          <p className="text-gray-500 leading-8 mt-4 text-lg">
+          <p className="text-gray-500 leading-8 mt-4 text-lg w-full max-w-2xl wrap-break-words whitespace-normal ">
             We create unforgettable travel experiences with world-class
             destinations, premium service and personalized journeys that turn
             every trip into an adventure.
           </p>
 
-          <div className="flex mt-4 items-center justify-around">
+          <div className="flex flex-col md:flex-col mt-4 items-center justify-around">
             <div>
               <AvatarGroup>
                 <Avatar>
@@ -122,7 +123,7 @@ const About = () => {
               </AvatarGroup>
             </div>
 
-            <section className="flex">
+            <section className="flex ">
               <div className="p-6 px-3">
                 <div className="flex justify-center items-center gap-3">
                   <Users className="text-blue-600" />
@@ -147,14 +148,14 @@ const About = () => {
             </section>
           </div>
 
-          <div className="flex flex-wrap text-white gap-8 items-center mt-10">
-            <a href="#" className="flex justify-center items-center gap-1 rounded-full px-5 py-2 text-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:scale-105 group duration-500">
+          <div className="flex flex-wrap text-white gap-8 items-center justify-center md:justify-start mt-10">
+            <Link to="/about" className="flex justify-center items-center gap-1 rounded-full px-5 py-2 text-lg bg-linear-to-r from-blue-600 to-blue-500 hover:scale-105 group duration-500">
             <span >
               About Us More
             </span>
               <ArrowRight className="w-6 h-6 -rotate-30" />
 
-            </a>
+            </Link>
           </div>
         </div>
       </div>
