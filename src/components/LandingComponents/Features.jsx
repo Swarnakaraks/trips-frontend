@@ -1,48 +1,90 @@
-import React from 'react'
-import FeaturesCards from '../Common/FeaturesCards'
-import { PhoneCall, Puzzle, ShieldCheck, Zap } from 'lucide-react'
+import React from "react";
+import { motion } from "framer-motion";
+import FeaturesCards from "../Common/FeaturesCards";
+import { Headphones, PlaneTakeoff, ShieldCheck, MapPinned } from "lucide-react";
 
 const Features = () => {
+  const featuresData = [
+    {
+      title: "24/7 Travel Assistance",
+      description:
+        "Our dedicated team is available anytime to help with bookings, support and travel guidance worldwide.",
+      icon: Headphones,
+      iconcolor: "text-blue-300",
+    },
+    {
+      title: "Fast Flight Booking",
+      description:
+        "Book flights in seconds with smooth search experience and instant ticket confirmations.",
+      icon: PlaneTakeoff,
+      iconcolor: "text-orange-300",
+    },
+    {
+      title: "Safe & Secure Journey",
+      description:
+        "Your payments and travel details stay protected with advanced security and trusted systems.",
+      icon: ShieldCheck,
+      iconcolor: "text-green-300",
+    },
+    {
+      title: "Explore Dream Destinations",
+      description:
+        "Discover stunning places and curated travel experiences designed for unforgettable adventures.",
+      icon: MapPinned,
+      iconcolor: "text-purple-300",
+    },
+  ];
 
-   let featuresData = [
-    {
-        title: "24/7 Support",
-        description: "Our team is available anytime to help you solve issues quickly and efficiently.",
-        icon: PhoneCall
-    },
-    {
-        title: "Fast Performance",
-        description: "Experience lightning fast speed and smooth performance across all devices and platforms easily.",
-        icon: Zap
-    },
-    {
-        title: "Secure System",
-        description: "We provide strong security features to protect your data from threats and unauthorized access.",
-        icon: ShieldCheck
-    },
-    {
-        title: "Easy Integration",
-        description: "Seamlessly integrate our system with your existing tools without complex setup or configuration.",
-        icon: Puzzle
-    }
-]
   return (
-   <section className='px-20 py-10 bg-blue-50'>
-    <div className=''>
-        <h1 className='text-5xl font-bold text-center mb-10'>Our <span className='text-blue-600'>Features</span></h1>
-    </div>
+    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-20 xl:px-40">
+      <div className="relative z-10">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-orange-500 font-semibold uppercase tracking-[5px] mb-4"
+        >
+          Travel Smarter
+        </motion.p>
 
-    <div className='grid grid-cols-4 gap-4'>
-       {
-        featuresData.map((feature, index) => {
-            return(
-                <FeaturesCards feature={feature} key={index} />
-            )
-        })
-       }
-    </div>
-   </section>
-  )
-}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl lg:text-6xl font-black text-gray-800 text-center mb-5"
+        >
+          Why Travelers{" "}
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
+            Love Us
+          </span>
+        </motion.h1>
 
-export default Features
+        <motion.p
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-500 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto mb-12 lg:mb-16 px-2"
+        >
+          Experience seamless bookings, trusted travel services and
+          unforgettable adventures crafted for every journey.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+        >
+          {featuresData.map((feature, index) => (
+            <FeaturesCards key={index} feature={feature} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Features;

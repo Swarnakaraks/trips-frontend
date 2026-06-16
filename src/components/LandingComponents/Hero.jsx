@@ -1,78 +1,130 @@
-import React from "react";
 import { useEffect, useState } from "react";
-import CustomButton from "../common/CustomButton";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const Hero = () => {
-  const [current, setCurrent] = useState(0);
-
-  const slides = [
+/* slides data */
+const slides = [
   {
     id: 1,
-    title: "FIND YOUR NEXT ADVENTURE",
-    desc: "Discover unforgettable journeys across unique experiences, carefully crafted to inspire your travel dreams. Explore new destinations, enjoy seamless planning, and create memories that last a lifetime with ease and comfort.",
-    image: "/sea.jpg",
+    title: "Explore Hidden Paradise",
+    script: "Destination",
+    desc: "Float above crystal-clear lagoons, drift through untouched islands, and experience endless horizons where time slows down beautifully.",
+    image: "/mountain.jpg",
   },
   {
     id: 2,
-    title: "EXPLORE THE WORLD WITH CONFIDENCE",
-    desc: "Plan your trips effortlessly with trusted recommendations, smooth itineraries, and reliable travel experiences. Whether you're traveling solo or with others, enjoy comfort, safety, and convenience at every step of your journey.",
-    image: "/trip.jpg",
+    title: "Ocean Blue Paradise",
+    script: "Freedom",
+    desc: "Sail across endless blue waters, dive into crystal-clear oceans, and feel the calm rhythm of tropical island life.",
+    image: "/sea.jpg",
   },
   {
     id: 3,
-    title: "RELAX, EXPLORE & ENJOY",
-    desc: "Take a break from your routine and immerse yourself in relaxing escapes designed for every traveler. From peaceful getaways to exciting adventures, find the perfect balance of relaxation, exploration, and enjoyment.",
-    image: "/mountain.jpg",
+    title: "Discover Sacred Heritage",
+    script: "Skyline",
+    desc: "Walk through ancient temples hidden in mist and jungle, where history, culture, and nature blend into a magical experience.",
+    image: "/trip.jpg",
   },
 ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 5000);
+const AUTOPLAY = 6000;
 
-    return () => clearInterval(interval);
+/* hero component */
+export default function TripHero() {
+  const [current, setCurrent] = useState(0);
+
+  /* preload images */
+  useEffect(() => {
+    slides.forEach((s) => (new Image().src = s.image));
+  }, []);
+
+  /* autoplay slider */
+  useEffect(() => {
+    const id = setInterval(() => setCurrent((p) => (p + 1) % slides.length), AUTOPLAY);
+    return () => clearInterval(id);
   }, []);
 
   const active = slides[current];
 
   return (
-    <div className="-mt-26 relative w-full h-screen overflow-hidden">
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-        style={{ backgroundImage: `url(${active.image})` }}/>
+    <section id="home" className="relative h-screen overflow-hidden flex items-center text-white justify-center">
 
-      {/* OVERLAY + BLUR */}
-      <div className="absolute inset-0 bg-black/60 "></div>
+      {/* background */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={active.id}
+            className="absolute inset-0"
+            initial={{ scale: 1.4, opacity: 1, filter: "blur(0px)" }}
+            animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+            exit={{ scale: 1.04, opacity: 1, filter: "blur(4px)" }}
+            transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img src={active.image} className="h-full w-full object-cover" />
+          </motion.div>
+        </AnimatePresence>
 
-      {/* CONTENT */}
-      <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 md:px-20 text-white w-full">
-        {/* TITLE */}
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight ">
-          {active.title}
-        </h1>
-
-        {/* DESCRIPTION */}
-        <p className="mt-6 text-gray-300 text-lg leading-relaxed delay-300 text-center max-w-4xl mb-10">
-          {active.desc}
-        </p>
-      <CustomButton text={"Explore"}/>
+        {/* overlays */}
+        <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/40 to-transparent" />
       </div>
 
-      {/* DOTS */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full cursor-pointer ${
-              index === current ? "bg-blue-600" : "bg-white/50"
-            }`}
+      {/* content */}
+      <div className="absolute  inset-0 w-screen z-10 flex justify-center text-center items-center px-6 md:px-12">
+
+        <div className="w-full ">
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.id}
+              initial={{ opacity: 1, y: 60, filter: "blur(5px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -25, filter: "blur(6px)" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col justify-center items-center"
+            >
+
+              {/* title */}
+              <h1 className=" relative text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold ">
+                <div>{active.title}</div>
+                <div className=" text-8xl bg-linear-to-r from-orange-600 to-orange-400 bg-clip-text text-transparent">
+                  {active.script}
+                </div>
+              </h1>
+              {/* description */}
+              <p className="mt-6 max-w-xl text-lg text-white/70 text-center">
+                {active.desc}
+              </p>
+
+
+              {/* buttons */}
+              <div className="flex flex-wrap text-white gap-8 items-center justify-center mt-10">
+            <a href="/login" className="flex justify-center items-center overflow-hidden group rounded-full bg-linear-to-r from-blue-600 to-cyan-500 px-6 py-2 text-[15px] font-semibold text-white shadow-md transition hover:scale-105 duration-300">
+            <span >
+              Start Journey
+            </span>
+              <ArrowRight className="w-6 h-6 -rotate-30 group-hover:ml-0.5 group-hover:mb-0.5 duration-300" />
+
+            </a>
+          </div>
+
+            </motion.div>
+          </AnimatePresence>
+
+        </div>
+      </div>
+
+      {/* dots */}
+      <div className="absolute bottom-6 right-50% z-20 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-2 rounded-full transition-all duration-700 ${current === i ? "w-10 bg-blue-400" : "w-2 bg-white/30"}`}
           />
         ))}
       </div>
-    </div>
-  );
-};
 
-export default Hero;
+    </section>
+  );
+}

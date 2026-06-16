@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const CustomButton = ({text}) => {
+const CustomButton = ({ text, onClick, icon }) => {
   return (
-   <button className='bg-blue-600 text-white w-30 h-10 shadow-blue-400 rounded-full hover:border-blue-600 cursor-pointer hover:border hover:bg-blue-700'>
-    {text}
-   </button>
-  )
-}
+    <button
+      onClick={onClick}
+      className= "relative overflow-hidden rounded-full bg-linear-to-r from-blue-600 to-cyan-500 px-6 py-2 text-[15px] font-semibold text-white shadow-md transition hover:scale-105 duration-300"
+    >
+      {icon}
+      {text}
+    </button>
+  );
+};
 
-export default CustomButton
+export default CustomButton;
