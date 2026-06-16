@@ -85,9 +85,9 @@ const PageNavbar = () => {
             const Icon = item.icon;
 
             return (
-              <motion.a
+              <motion.Link
                 key={item.name}
-                href={item.href}
+                to={item.to}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -108,7 +108,7 @@ const PageNavbar = () => {
                 <span className="text-[11px] font-medium">
                   {item.name}
                 </span>
-              </motion.a>
+              </motion.Link>
             );
           })}
         </div>

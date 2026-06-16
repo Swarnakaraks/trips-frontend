@@ -80,9 +80,9 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className=" text-2xl sm:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+          className=" text-4xl sm:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
             We're Number One Travel
-            <span className="block text-3xl text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400 mt-2">
+            <span className="block text-4xl text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400 mt-2">
               Adventure Company
             </span>
           </motion.h1>

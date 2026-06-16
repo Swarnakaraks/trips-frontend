@@ -371,7 +371,7 @@ const TravelPackages = () => {
           Travel Packages
         </p>
 
-        <h1 className="text-5xl lg:text-6xl font-black text-gray-900">
+        <h1 className="text-4xl lg:text-6xl font-black text-gray-900">
           Discover Your Perfect
           <span className="block text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
             Journey Package

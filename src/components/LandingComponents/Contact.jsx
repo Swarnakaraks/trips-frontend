@@ -81,7 +81,7 @@ export default function Contact() {
                 Contact Us
               </span>
               
-               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
 
               Let's Build Your
 

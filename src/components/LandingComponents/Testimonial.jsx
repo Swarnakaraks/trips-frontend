@@ -46,10 +46,10 @@ const Testimonial = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7 }}
                   viewport={{ once: true }}
-                  className="text-6xl font-black text-gray-800 text-center mb-5"
+                  className="text-4xl md:text-6xl font-black text-gray-800 text-center mb-5"
                 >
                   What Our{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
                      Travelers Say
                   </span>
                 </motion.h1>

@@ -100,9 +100,9 @@ const Navbar = () => {
             const Icon = link.icon;
 
             return (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.to}
                 className={`
                   flex flex-col items-center justify-center gap-1
                   transition-all duration-300
@@ -117,7 +117,7 @@ const Navbar = () => {
                 <span className="text-[11px] font-medium">
                   {link.name}
                 </span>
-              </a>
+              </Link>
             );
           })}
         </div>
