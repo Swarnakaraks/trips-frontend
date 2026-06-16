@@ -11,6 +11,8 @@ const Navbar = () => {
       setScrolled(window.scrollY > 80);
     };
 
+
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -19,7 +21,7 @@ const Navbar = () => {
     { name: "Home", to: "/", icon: House },
     { name: "About", to: "/about", icon: Info },
     { name: "Help", to: "/help", icon: CircleHelp },
-    { name: "Contact", to: "#contact", icon: Phone },
+    { name: "Contact", to: "/contact", icon: Phone },
   ];
 
   return (
@@ -61,7 +63,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              href={link.to}
+              to={link.to}
               className="relative group hover:text-blue-500 transition-colors duration-300"
             >
               {link.name}

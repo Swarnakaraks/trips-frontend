@@ -41,7 +41,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="help" className="relative py-28 overflow-hidden px-6 lg:px-20">
+    <section id="help" className="relative py-28 overflow-hidden px-10 lg:px-20">
 
      
    

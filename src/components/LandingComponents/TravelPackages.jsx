@@ -365,7 +365,7 @@ const cardVariants = {
 
 const TravelPackages = () => {
   return (
-    <section className="py-24 px-6 lg:px-32 overflow-hidden">
+    <section className="py-24 px-10 lg:px-32 overflow-hidden">
       <div className="mb-14">
         <p className="uppercase tracking-[5px] text-orange-500 font-bold mb-3">
           Travel Packages

@@ -62,8 +62,8 @@ const PageNavbar = () => {
 
           {/* BOOK NOW */}
           <motion.div whileHover={{ scale: 1.05 }}>
-             <Link to="/login">
-            <CustomButton text="Book Now" />
+            <Link to="/login">
+              <CustomButton text="Book Now" />
             </Link>
           </motion.div>
         </div>
@@ -85,9 +85,8 @@ const PageNavbar = () => {
             const Icon = item.icon;
 
             return (
-              <motion.Link
+              <motion.div
                 key={item.name}
-                to={item.to}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -95,20 +94,22 @@ const PageNavbar = () => {
                   duration: 0.4,
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="
-                  flex flex-col items-center justify-center
-                  gap-1
-                  text-gray-600
-                  hover:text-blue-600
-                  transition-all duration-300
-                "
               >
-                <Icon size={22} />
-
-                <span className="text-[11px] font-medium">
-                  {item.name}
-                </span>
-              </motion.Link>
+                <Link
+                  to={item.to}
+                  className="
+      flex flex-col items-center justify-center
+      gap-1
+      text-gray-600
+      hover:text-blue-600
+      transition-all duration-300
+      h-full
+    "
+                >
+                  <Icon size={22} />
+                  <span className="text-[11px] font-medium">{item.name}</span>
+                </Link>
+              </motion.div>
             );
           })}
         </div>

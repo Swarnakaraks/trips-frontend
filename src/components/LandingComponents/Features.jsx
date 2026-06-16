@@ -36,7 +36,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-20 xl:px-40">
+    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-20 xl:px-40">
       <div className="relative z-10">
         <motion.p
           initial={{ opacity: 0 }}
@@ -47,18 +47,18 @@ const Features = () => {
           Travel Smarter
         </motion.p>
 
-        <motion.h1
+        <motion.span
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl lg:text-6xl font-black text-gray-800 text-center mb-5"
+          className="flex justify-center flex-col md:flex-row text-4xl sm:text-4xl lg:text-6xl font-black text-gray-800 text-center mb-5"
         >
           Why Travelers{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
             Love Us
           </span>
-        </motion.h1>
+        </motion.span>
 
         <motion.p
           initial={{ opacity: 0, scale: 0.5 }}

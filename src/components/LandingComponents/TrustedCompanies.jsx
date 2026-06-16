@@ -15,7 +15,7 @@ const TrustedCompanies = () => {
         <p className="uppercase tracking-[6px] text-orange-500 font-semibold">
           Trusted By
         </p>
-        <h2 className="text-4xl font-black text-gray-900 mt-2">
+        <h2 className=" text-3xl md:text-4xl font-black text-gray-900 mt-2">
           Top Global Companies
         </h2>
       </div>

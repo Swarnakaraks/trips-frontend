@@ -105,14 +105,11 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-4xl text-center p-20"
+          className="mx-auto max-w-4xl text-center p-10 md:p-20"
         >
-          <span className=" relative px-4 py-2 text-5xl font-extrabold ">
+          <span className=" relative px-4 py-2 text-4xl md:text-5xl font-extrabold ">
             ABOUT US
-             <div
-     
-      className="absolute left-6 right-0 top-7 w-full flex justify-center"
-    >
+             <div className="absolute left-6 right-0 top-4 md:top-7  w-full flex justify-center">
       <svg viewBox="0 0 450 100" className="w-64 h-24">
         <motion.path
           d="M10 60 Q 180 15 350 40"
@@ -130,7 +127,7 @@ const AboutUs = () => {
           </span>
 
 
-          <h2 className="mb-6  mt-20 text-4xl font-extrabold text-gray-900 md:text-6xl">
+          <h2 className="mb-6 mt-15  md:mt-20 text-4xl font-extrabold text-gray-900 md:text-6xl">
             Discover The World
             <span className="block text-blue-600">With Confidence</span>
           </h2>
@@ -143,14 +140,14 @@ const AboutUs = () => {
         </motion.div>
 
        
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 p-20">
+        <div className="grid gap-5 grid-cols-2 lg:grid-cols-4 p-10 md:p-20">
           {galleryImages.map((img, index) => (
             <div key={index} className="overflow-hidden rounded-3xl shadow-xl hover:scale-105 group  transition-all duration-300"
             >
               <img
                 src={img}
                 alt="Travel"
-                className="h-60 w-full object-cover group-hover:scale-110 transition-all duration-300"
+                className=" h-30 md:h-60 w-full object-cover group-hover:scale-110 transition-all duration-300"
               />
             </div>
           ))}
@@ -158,7 +155,7 @@ const AboutUs = () => {
 
 
   
-        <div className=" grid items-center gap-12 lg:grid-cols-2 p-20">
+        <div className=" grid items-center gap-12 lg:grid-cols-2 p-10 md:p-20">
           {/* video */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -210,7 +207,7 @@ const AboutUs = () => {
           </motion.div>
         </div>
 
-        <section className="relative px-6 py-24 overflow-hidden">
+        <section className="relative p-10 md:px-6 md:py-24 overflow-hidden">
   {/* Heading */}
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -219,7 +216,7 @@ const AboutUs = () => {
     viewport={{ once: true }}
     className="mx-auto mb-16 max-w-3xl text-center"
   >
-    <span className="inline-flex items-center gap-2 text-center text-orange-500 font-semibold uppercase tracking-[5px] mb-4">
+    <span className=" flex flex-col md:inline-flex items-center gap-2 text-center text-orange-500 font-semibold uppercase tracking-[5px] mb-4">
       <Trophy size={16} />
       Achievements & Recognition
     </span>
@@ -251,11 +248,11 @@ const AboutUs = () => {
           delay: index * 0.1,
         }}
         viewport={{ once: true }}
-        className="group relative overflow-hidden rounded-[30px] border border-gray-100 bg-white p-8 shadow-xl"
+        className="group flex flex-col items-center md:items-start relative overflow-hidden rounded-[30px] border border-gray-100 bg-white p-8 shadow-xl"
 >
 
         {/* Icon */}
-        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-50 to-blue-50/50">
+        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-blue-50 to-blue-50/50">
           <item.icon
             size={45}
             className={`${item.color} transition-all duration-300 group-hover:scale-110`}
@@ -268,7 +265,7 @@ const AboutUs = () => {
         </h3>
 
         {/* Description */}
-        <p className="leading-7 text-gray-600">
+        <p className=" text-center md:text-start leading-7 text-gray-600">
           {item.description}
         </p>
 
@@ -278,137 +275,119 @@ const AboutUs = () => {
     ))}
   </div>
 
-  {/*  Highlight Card */}
   <motion.section
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
-  className="mt-24 overflow-hidden rounded-[40px] bg-white shadow-2xl"
->
-  <div className="grid lg:grid-cols-2">
-    
-    {/* Left Side */}
-    <div className="relative overflow-hidden p-12 text-white bg-center bg-cover" style={{backgroundImage:"url('/trip.jpg')"}}>
-            {/* overlays */}
-        <div className="absolute inset-0 bg-black/40" />
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="mt-16 sm:mt-24 overflow-hidden rounded-[24px] sm:rounded-[40px] bg-white shadow-2xl"
+    >
+      <div className="grid lg:grid-cols-2">
 
+        {/* LEFT SIDE */}
+        <div
+          className="relative overflow-hidden bg-cover bg-center p-6 sm:p-8 lg:p-12 min-h-[250px] sm:min-h-[350px]"
+          style={{ backgroundImage: "url('/trip.jpg')" }}
+        >
+          {/* overlay */}
+          <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10">
-        <h1 className="text-7xl font-black lg:text-8xl">
-          50K+
-        </h1>
+          <div className="relative z-10 text-white">
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-black">
+              50K+
+            </h1>
 
-        <h3 className="mt-4 text-3xl font-bold">
-          Happy Travelers
-        </h3>
+            <h3 className="mt-2 sm:mt-4 text-2xl sm:text-3xl font-bold">
+              Happy Travelers
+            </h3>
 
-        <p className="mt-4 max-w-md text-blue-50">
-          Creating unforgettable travel experiences
-          and helping thousands of explorers discover
-          amazing destinations worldwide.
-        </p>
+            <p className="mt-3 sm:mt-4 max-w-md text-sm sm:text-base text-blue-50 leading-relaxed">
+              Creating unforgettable travel experiences and helping thousands of explorers discover amazing destinations worldwide.
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="p-6 sm:p-8 lg:p-12">
+
+          <span className="uppercase tracking-[4px] sm:tracking-[6px] text-orange-500 font-semibold text-xs sm:text-sm">
+            Why People Trust Us
+          </span>
+
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
+            Excellence In Every Journey
+          </h2>
+
+          <div className="mt-8 sm:mt-10 space-y-5 sm:space-y-8">
+
+            {/* ITEM 1 */}
+            <div className="flex items-start gap-3 sm:gap-5">
+              <div className="rounded-xl sm:rounded-2xl bg-blue-100 p-3 sm:p-4 shrink-0">
+                <Trophy className="h-5 w-5 sm:h-7 sm:w-7 text-blue-600" />
+              </div>
+
+              <div>
+                <h4 className="text-base sm:text-xl font-semibold">
+                  Industry Recognition
+                </h4>
+                <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Trusted by travelers for delivering premium travel planning and exceptional customer experiences.
+                </p>
+              </div>
+            </div>
+
+            {/* ITEM 2 */}
+            <div className="flex items-start gap-3 sm:gap-5">
+              <div className="rounded-xl sm:rounded-2xl bg-orange-100 p-3 sm:p-4 shrink-0">
+                <ShieldCheck className="h-5 w-5 sm:h-7 sm:w-7 text-orange-500" />
+              </div>
+
+              <div>
+                <h4 className="text-base sm:text-xl font-semibold">
+                  Secure & Reliable
+                </h4>
+                <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Verified partners, secure payments, and reliable travel arrangements around the globe.
+                </p>
+              </div>
+            </div>
+
+            {/* ITEM 3 */}
+            <div className="flex items-start gap-3 sm:gap-5">
+              <div className="rounded-xl sm:rounded-2xl bg-green-100 p-3 sm:p-4 shrink-0">
+                <BadgeCheck className="h-5 w-5 sm:h-7 sm:w-7 text-green-600" />
+              </div>
+
+              <div>
+                <h4 className="text-base sm:text-xl font-semibold">
+                  Certified Experts
+                </h4>
+                <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Experienced travel consultants helping travelers build unforgettable journeys.
+                </p>
+              </div>
+            </div>
+
+            {/* ITEM 4 */}
+            <div className="flex items-start gap-3 sm:gap-5">
+              <div className="rounded-xl sm:rounded-2xl bg-purple-100 p-3 sm:p-4 shrink-0">
+                <Users className="h-5 w-5 sm:h-7 sm:w-7 text-purple-600" />
+              </div>
+
+              <div>
+                <h4 className="text-base sm:text-xl font-semibold">
+                  Customer First Approach
+                </h4>
+                <p className="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Personalized support before, during, and after every trip.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div>
-
-    {/* Right Side */}
-    <div className="p-12">
-      <span className="uppercase tracking-[6px] text-orange-500 font-semibold">
-        Why People Trust Us
-      </span>
-
-      <h2 className="mt-3 text-4xl font-bold text-gray-900">
-        Excellence In Every Journey
-      </h2>
-
-      <div className="mt-10 space-y-8">
-
-        <div
-         
-          className="flex items-start gap-5"
-        >
-          <div className="rounded-2xl bg-blue-100 p-4">
-            <Trophy className="h-7 w-7 text-blue-600" />
-          </div>
-
-          <div>
-            <h4 className="text-xl font-semibold">
-              Industry Recognition
-            </h4>
-
-            <p className="mt-2 text-gray-600">
-              Trusted by travelers for delivering
-              premium travel planning and exceptional
-              customer experiences.
-            </p>
-          </div>
-        </div>
-
-        <div
-          
-          className="flex items-start gap-5"
-        >
-          <div className="rounded-2xl bg-orange-100 p-4">
-            <ShieldCheck className="h-7 w-7 text-orange-500" />
-          </div>
-
-          <div>
-            <h4 className="text-xl font-semibold">
-              Secure & Reliable
-            </h4>
-
-            <p className="mt-2 text-gray-600">
-              Verified partners, secure payments,
-              and reliable travel arrangements
-              around the globe.
-            </p>
-          </div>
-        </div>
-
-        <div
-          
-          className="flex items-start gap-5"
-        >
-          <div className="rounded-2xl bg-green-100 p-4">
-            <BadgeCheck className="h-7 w-7 text-green-600" />
-          </div>
-
-          <div>
-            <h4 className="text-xl font-semibold">
-              Certified Experts
-            </h4>
-
-            <p className="mt-2 text-gray-600">
-              Experienced travel consultants helping
-              travelers build unforgettable journeys.
-            </p>
-          </div>
-        </div>
-
-        <div
-          
-          className="flex items-start gap-5"
-        >
-          <div className="rounded-2xl bg-purple-100 p-4">
-            <Users className="h-7 w-7 text-purple-600" />
-          </div>
-
-          <div>
-            <h4 className="text-xl font-semibold">
-              Customer First Approach
-            </h4>
-
-            <p className="mt-2 text-gray-600">
-              Personalized support before, during,
-              and after every trip.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</motion.section>
+    </motion.section>
 </section>
 
       </div>

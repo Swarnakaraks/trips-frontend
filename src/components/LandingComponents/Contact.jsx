@@ -60,12 +60,12 @@ export default function Contact() {
   }
 
   return (
-    <section id='contact' className="relative overflow-hidden py-24 px-4 bg-blue-50/50">
+    <section id='contact' className="relative overflow-hidden md:py-24 p-10 md:px-4 bg-blue-50/50">
 
 
       <div className="max-w-6xl mx-auto relative z-10">
 
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
 
           {/* LEFT DESIGN SIDE */}
 

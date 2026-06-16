@@ -46,12 +46,12 @@ const Testimonial = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7 }}
                   viewport={{ once: true }}
-                  className="text-4xl md:text-6xl font-black text-gray-800 text-center mb-5"
+                  className="flex justify-center flex-col md:flex-row text-4xl md:text-6xl font-black text-gray-800 text-center mb-5"
                 >
                   What Our{" "}
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
+                  <div className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
                      Travelers Say
-                  </span>
+                  </div>
                 </motion.h1>
       </div>
 
@@ -72,7 +72,7 @@ const Testimonial = () => {
             <motion.div
               key={i}
               whileHover={{ scale: 1.05 }}
-              className="relative min-w-[340px] max-w-[340px] bg-white rounded-[28px] shadow-xl p-6 flex flex-col justify-between"
+              className="relative min-w-85 max-w-85 bg-white rounded-[28px] shadow-xl p-6 flex flex-col justify-between"
             >
 
              

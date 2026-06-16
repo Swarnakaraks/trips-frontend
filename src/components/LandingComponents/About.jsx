@@ -35,11 +35,11 @@ const CountUp = ({ value }) => {
 
 const About = () => {
   return (
-    <section className="relative overflow-hidden py-28 px-6 lg:px-32 bg-blue-50/50">
+    <section className="relative overflow-hidden py-14 md:py-28 px-6 lg:px-32 bg-blue-50/50">
       <div className="grid lg:grid-cols-2 gap-20 items-center">
         <div className="relative flex justify-center"
         >
-          <div className="absolute top-5 left-18 border-dashed rounded-2xl w-70 h-75  md:w-100 md:h-125 border-2 border-orange-500 bg-blue"></div>
+          <div className="absolute top-5 left-6 sm:left-2 md:left-18 border-dashed rounded-2xl w-70 h-75  md:w-100 md:h-125 border-2 border-orange-500 bg-blue"></div>
 
           <div className="group relative w-70 h-75 md:w-100 md:h-125 rounded-2xl overflow-hidden duration-700">
             <img
@@ -71,7 +71,7 @@ const About = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-full min-w-0">
+        <div className="w-full min-w-0 p-5">
           <p className="uppercase tracking-[5px] text-orange-500 font-semibold mb-4 ">
             About Company
           </p>
@@ -80,7 +80,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className=" text-4xl sm:text-4xl lg:text-5xl font-black leading-tight text-gray-900">
+          className=" text-4xl sm:text-4xl lg:text-5xl  font-black leading-tight text-gray-900">
             We're Number One Travel
             <span className="block text-4xl text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400 mt-2">
               Adventure Company
@@ -93,7 +93,7 @@ const About = () => {
             every trip into an adventure.
           </p>
 
-          <div className="flex flex-col md:flex-col mt-4 items-center justify-around">
+          <div className="flex flex-col md:flex-row mt-4  justify-around">
             <div>
               <AvatarGroup>
                 <Avatar>
@@ -123,8 +123,8 @@ const About = () => {
               </AvatarGroup>
             </div>
 
-            <section className="flex ">
-              <div className="p-6 px-3">
+            <section className="flex  ">
+              <div className="p-6 px-0">
                 <div className="flex justify-center items-center gap-3">
                   <Users className="text-blue-600" />
                   <h1 className="text-3xl font-black text-gray-900">
@@ -148,7 +148,7 @@ const About = () => {
             </section>
           </div>
 
-          <div className="flex flex-wrap text-white gap-8 items-center justify-center md:justify-start mt-10">
+          <div className="flex flex-wrap text-white gap-8 items-center justify-start mt-2 md:mt-10">
             <Link to="/about" className="flex justify-center items-center gap-1 rounded-full px-5 py-2 text-lg bg-linear-to-r from-blue-600 to-blue-500 hover:scale-105 group duration-500">
             <span >
               About Us More
