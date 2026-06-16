@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CustomButton from './common/CustomButton'
+import CustomButton from './Common/CustomButton'
 
 
 const Navbar = () => {
