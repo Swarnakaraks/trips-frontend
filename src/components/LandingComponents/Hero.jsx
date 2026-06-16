@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-/* slides data */
 const slides = [
   {
     id: 1,
@@ -31,101 +29,88 @@ const slides = [
 
 const AUTOPLAY = 6000;
 
-/* hero component */
 export default function TripHero() {
   const [current, setCurrent] = useState(0);
+  const active = slides[current];
 
-  /* preload images */
   useEffect(() => {
-    slides.forEach((s) => (new Image().src = s.image));
-  }, []);
-
-  /* autoplay slider */
-  useEffect(() => {
-    const id = setInterval(() => setCurrent((p) => (p + 1) % slides.length), AUTOPLAY);
+    const id = setInterval(() => {
+      setCurrent((p) => (p + 1) % slides.length);
+    }, AUTOPLAY);
     return () => clearInterval(id);
   }, []);
 
-  const active = slides[current];
-
   return (
-    <section id="home" className="relative h-[50vh] sm:h-[70vh] md:h-screen overflow-hidden flex items-center text-white justify-center">
+    <section className="relative h-[60vh] md:h-screen overflow-hidden flex items-center justify-center text-white">
+      {/* BACKGROUND */}
+      {slides.map((s, i) => (
+        <div
+          key={s.id}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{
+            opacity: i === current ? 1 : 0,
+            zIndex: i === current ? 1 : 0,
+          }}
+        >
+          <img
+            src={s.image}
+            className="h-full w-full object-cover"
+            loading="eager"
+          />
+        </div>
+      ))}
 
-      {/* background */}
-      <div className="absolute inset-0">
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={active.id}
-            className="absolute inset-0"
-            initial={{ scale: 1.4, opacity: 1, filter: "blur(0px)" }}
-            animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-            exit={{ scale: 1.04, opacity: 1, filter: "blur(4px)" }}
-            transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
+      {/* overlay */}
+      <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent z-10" />
+
+      {/* CONTENT */}
+      <div className="relative z-20 text-center px-6">
+        <motion.h1
+          key={active.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-7xl font-bold"
+        >
+          {active.title}
+          <span className="block text-orange-400">{active.script}</span>
+        </motion.h1>
+
+        <motion.p
+          key={active.desc}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-5 text-white/70 max-w-xl mx-auto"
+        >
+          {active.desc}
+        </motion.p>
+
+        <div className="mt-10">
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:scale-105 transition-transform"
           >
-            <img src={active.image} className="h-full w-full object-cover" />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* overlays */}
-        <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/40 to-transparent" />
-      </div>
-
-      {/* content */}
-      <div className="absolute  inset-0 w-screen z-10 flex justify-center text-center items-center px-6 md:px-12">
-
-        <div className="w-full ">
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 1, y: 60, filter: "blur(5px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -25, filter: "blur(6px)" }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col justify-center items-center "
-            >
-
-              {/* title */}
-              <h1 className=" relative text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mt-12 md:mt-0">
-                <div>{active.title}</div>
-                <div className=" text-5xl md:text-8xl bg-linear-to-r from-orange-600 to-orange-400 bg-clip-text text-transparent">
-                  {active.script}
-                </div>
-              </h1>
-              {/* description */}
-              <p className="mt-6 max-w-xl text-lg text-white/70 text-center">
-                {active.desc}
-              </p>
-
-
-              {/* buttons */}
-              <div className="flex flex-wrap text-white gap-8 items-center justify-center mt-10">
-            <Link to="/login" className="flex justify-center items-center overflow-hidden group rounded-full bg-linear-to-r from-blue-600 to-cyan-500 px-6 py-2 text-[15px] font-semibold text-white shadow-md transition hover:scale-105 duration-300">
-            <span >
-              Start Journey
-            </span>
-              <ArrowRight className="w-6 h-6 -rotate-30 group-hover:ml-0.5 group-hover:mb-0.5 duration-300" />
-
-            </Link>
-          </div>
-
-            </motion.div>
-          </AnimatePresence>
-
+            Start Journey
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
 
-      {/* dots */}
-      <div className="absolute bottom-6 right-50% z-20 flex gap-2">
+      {/* DOTS (NEW) */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`h-2 rounded-full transition-all duration-700 ${current === i ? "w-10 bg-blue-400" : "w-2 bg-white/30"}`}
+            className={`transition-all duration-500 rounded-full ${
+              current === i
+                ? "w-10 h-2 bg-blue-400"
+                : "w-2 h-2 bg-white/40 hover:bg-white/60"
+            }`}
           />
         ))}
       </div>
-
     </section>
   );
 }

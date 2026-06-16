@@ -7,106 +7,116 @@ const statsData = [
   { end: 98, suffix: "%", label: "Customer Satisfaction" },
 ];
 
-
 const useCountUp = (end, trigger, duration = 1200) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!trigger) return;
 
-    let start = 0;
-    const increment = end / (duration / 16);
+    let animationFrame;
+    let startTime = null;
 
-    const timer = setInterval(() => {
-      start += increment;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
 
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
+      const progress = Math.min(
+        (timestamp - startTime) / duration,
+        1
+      );
+
+      setCount(Math.floor(progress * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
       }
+    };
 
-      setCount(Math.floor(start));
-    }, 16);
+    animationFrame = requestAnimationFrame(animate);
 
-    return () => clearInterval(timer);
+    return () => cancelAnimationFrame(animationFrame);
   }, [end, trigger, duration]);
 
   return count;
 };
 
-const StatItem = ({ end, suffix, label, trigger }) => {
+const StatItem = React.memo(({ end, suffix, label, trigger }) => {
   const value = useCountUp(end, trigger);
 
   return (
     <div className="py-6 border-r last:border-r-0 border-white/10">
-      <h3 className="text-5xl font-bold text-white">
+      <h3 className="text-4xl md:text-5xl font-bold text-white">
         {value}
         {suffix}
       </h3>
-      <p className="text-white/70 mt-3 text-sm md:text-base">{label}</p>
+
+      <p className="text-white/70 mt-3 text-sm md:text-base">
+        {label}
+      </p>
     </div>
   );
-};
+});
 
 const Banner = () => {
   const sectionRef = useRef(null);
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
+    const currentSection = sectionRef.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTrigger(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.4 }
+      {
+        threshold: 0.3,
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative py-15 bg-fixed bg-cover bg-center"
+      className="relative py-16 md:py-24 bg-cover bg-center bg-fixed overflow-hidden"
       style={{
-        backgroundImage:
-          "url('/beautiful.jpg')",
+        backgroundImage: "url('/beautiful.jpg')",
       }}
     >
-      {/* overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" />
 
+      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 text-center">
-
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-5 leading-tight">
-            Trusted By Thousands of{" "}
-            <span className="bg-gradient-to-r from bg-blue-600 to-blue-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+          Trusted By Thousands of{" "}
+          <span className="bg-linear-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
             Travelers Worldwide
-              </span>
-          </h2>
+          </span>
+        </h2>
 
-          <p className="mt-4 text-white/70 text-lg leading-8">
-            Turning dream destinations into unforgettable experiences for explorers worldwide.
-          </p>
+        <p className="mt-4 text-white/70 text-lg leading-8 max-w-3xl mx-auto">
+          Turning dream destinations into unforgettable experiences for
+          explorers worldwide.
+        </p>
 
-        {/* stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4">
-
-          {statsData.map((item, i) => (
-            <StatItem key={i} {...item} trigger={trigger} />
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 mt-12">
+          {statsData.map((item, index) => (
+            <StatItem
+              key={index}
+              {...item}
+              trigger={trigger}
+            />
           ))}
-
         </div>
-
       </div>
     </section>
   );

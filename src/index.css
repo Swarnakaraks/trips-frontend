@@ -146,3 +146,23 @@
 html{
   scroll-behavior: smooth;
 }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+@keyframes Marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.run {
+  animation: Marquee 22s linear infinite;
+  will-change: transform;
+}

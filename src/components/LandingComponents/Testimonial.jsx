@@ -1,7 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { Star, Quote } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const testimonials = [
   {
@@ -24,91 +22,84 @@ const testimonials = [
     img: "/profile4.jpg",
     text: "Perfect family tour experience in Chitwan. Kids enjoyed a lot!",
   },
-   {
+  {
     name: "Priya Gurung",
-    role: "Family Traveler",
     img: "/profile5.jpg",
     text: "Best travel agency experience I've had so far. Truly professional service.",
   },
 ];
 
 const Testimonial = () => {
+  const [paused, setPaused] = useState(false);
+
   return (
-    <section className="py-15 px-6 lg:px-20 overflow-hidden">
-      
+    <section className="py-16 px-6 lg:px-20 overflow-hidden">
       {/* HEADER */}
-      <div className="text-center">
+      <div className="text-center mb-12">
         <p className="uppercase tracking-[5px] text-orange-500 font-bold mb-4">
           Testimonials
         </p>
-         <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7 }}
-                  viewport={{ once: true }}
-                  className="flex justify-center flex-col md:flex-row text-4xl md:text-6xl font-black text-gray-800 text-center mb-5"
-                >
-                  What Our{" "}
-                  <div className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
-                     Travelers Say
-                  </div>
-                </motion.h1>
+
+        <h1 className="flex flex-col md:flex-row justify-center items-center gap-3 text-4xl md:text-6xl font-black text-gray-800">
+          <span>What Our</span>
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
+            Travelers Say
+          </span>
+        </h1>
       </div>
 
-     
-      <div className="relative w-full overflow-hidden">
-
-        <motion.div
-          className="flex gap-8 w-max py-10"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            duration: 18,
-            ease: "linear",
+      
+      <div className="relative overflow-hidden">
+        <div
+          className="run flex gap-8 w-max py-4"
+          style={{
+            animationPlayState: paused ? "paused" : "running",
           }}
         >
-
           {[...testimonials, ...testimonials].map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              whileHover={{ scale: 1.05 }}
-              className="relative min-w-85 max-w-85 bg-white rounded-[28px] shadow-xl p-6 flex flex-col justify-between"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              className="group relative min-w-85 max-w-85 bg-white rounded-[28px] shadow-lg p-6 transition-all duration-300 hover:scale-105"
             >
+              <Quote className="absolute top-5 right-5 text-orange-300 w-6 h-6" />
 
-             
-              <Quote className="absolute top-4 right-4 text-orange-300 w-6 h-6" />
-
-              
-              <div className="flex items-center gap-3">
-                <img className="w-15 h-15 rounded-full object-cover" src={item.img} alt="C" />
+              <div className="flex items-center gap-4 mb-5">
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-14 h-14 rounded-full object-cover"
+                />
 
                 <div>
-                  <h3 className="font-semibold text-gray-800 mt-3">
+                  <h3 className="font-semibold text-gray-800">
                     {item.name}
                   </h3>
 
-              
-              <div className="flex items-center gap-1 text-orange-500 mb-4">
-                {Array(5).fill(0).map((_, i) => (
-                  <Star key={i} size={16} className="fill-orange-400" />
-                ))} <span className="text-gray-800">5.0</span>
-              </div>
-                 
+                  <div className="flex items-center gap-1 mt-1">
+                    {[...Array(5)].map((_, index) => (
+                      <Star
+                        key={index}
+                        size={15}
+                        className="fill-orange-400 text-orange-400"
+                      />
+                    ))}
+                    <span className="text-sm text-gray-700 ml-1">
+                      5.0
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* TEXT */}
-              <p className="text-gray-600 text-sm leading-6 mb-6">
-                “{item.text}”
+              <p className="text-gray-600 text-sm leading-7">
+                "{item.text}"
               </p>
-
-             
-
-            </motion.div>
+            </div>
           ))}
-
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );
