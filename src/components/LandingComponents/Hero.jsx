@@ -8,21 +8,21 @@ const slides = [
     title: "Explore Hidden Paradise",
     script: "Destination",
     desc: "Float above crystal-clear lagoons, drift through untouched islands, and experience endless horizons where time slows down beautifully.",
-    image: "/mountain.jpg",
+    image: "https://images.unsplash.com/photo-1476522465286-b5b94c729d2a?q=80&w=1458&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
     title: "Ocean Blue Paradise",
     script: "Freedom",
     desc: "Sail across endless blue waters, dive into crystal-clear oceans, and feel the calm rhythm of tropical island life.",
-    image: "/sea.jpg",
+    image: "https://images.unsplash.com/photo-1598598795009-f80c5072e665?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
     title: "Discover Sacred Heritage",
     script: "Skyline",
     desc: "Walk through ancient temples hidden in mist and jungle, where history, culture, and nature blend into a magical experience.",
-    image: "/trip.jpg",
+    image: "https://images.unsplash.com/photo-1553670590-f58a6135f69e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 

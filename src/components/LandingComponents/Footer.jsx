@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer style={{backgroundImage:"url(/pic45.jpg)"}} className="relative overflow-hidde bg-cover py-10 bg-center pb-10 px-6 lg:px-20">
+    <footer style={{backgroundImage:"url(https://images.unsplash.com/photo-1535262412227-85541e910204?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"}} className="relative overflow-hidde bg-cover py-10 bg-center pb-10 px-6 lg:px-20">
 
       
       {/* main content */}

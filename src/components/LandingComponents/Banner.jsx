@@ -15,7 +15,7 @@ const Banner = () => {
 
       className="relative py-16 md:py-24 bg-cover bg-center overflow-hidden"
       style={{
-        backgroundImage: "url('/beautiful.jpg')",
+        backgroundImage: "url('https://images.unsplash.com/photo-1734227048940-217f1e993447?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
       }}
     >
       {/* Overlay */}

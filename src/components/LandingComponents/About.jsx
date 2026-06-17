@@ -54,10 +54,10 @@ const About = () => {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mt-6">
             <AvatarGroup>
               {[
-                "/profile1.jpg",
-                "/profile2.jpg",
-                "/profile3.jpg",
-                "/profile4.jpg",
+                "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.unsplash.com/photo-1648123367577-661eee58334b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.unsplash.com/photo-1572957946666-2e386e1e913d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "https://images.unsplash.com/photo-1580632969236-0c96e97d48fe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
               ].map((src, i) => (
                 <Avatar key={i}>
                   <AvatarImage src={src} loading="lazy" />
