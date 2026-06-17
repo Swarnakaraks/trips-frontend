@@ -34,7 +34,7 @@ const Login = () => {
  if(token){
   const decodedToken = token ? jwtDecode(token) : null;
   return (
-    <Navigate to={decodedToken.role === "Admin" ? "/dashboard" : "/client/dashboard"}/>
+    <Navigate to={decodedToken.role === "admin" ? "/dashboard" : "/client/dashboard"}/>
   )
  }
 
@@ -63,7 +63,7 @@ const Login = () => {
                 const decodedToken = response.data.accessToken ? 
                 jwtDecode(response.data.accessToken) : null;
 
-                if(decodedToken.role === "Admin"){
+                if(decodedToken.role === "admin"){
                   navigate("/dashboard");
                 }
 

@@ -21,7 +21,7 @@ const SidebarLayout = ({ role }) => {
   const clientRoutes = ["/client/dashboard", "/client/trips", "/client/bookings", "/client/blogs",];
 
  const pathname = useLocation().pathname;
-  if (role === "Admin" && !adminRoutes.some((route) => pathname.startsWith(route))) {
+  if (role === "admin" && !adminRoutes.some((route) => pathname.startsWith(route))) {
     return (
       <div className="flex items-center justify-center h-screen text-2xl font-bold">
         Unauthorized Access
@@ -29,7 +29,7 @@ const SidebarLayout = ({ role }) => {
     );
   }
 
-  if (role === "User" && !clientRoutes.some((route) => pathname.startsWith(route))) {
+  if (role === "user" && !clientRoutes.some((route) => pathname.startsWith(route))) {
     return (
       <div className="flex items-center justify-center h-screen text-2xl font-bold">
         Unauthorized Access

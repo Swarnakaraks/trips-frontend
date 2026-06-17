@@ -20,6 +20,8 @@ import ClientDashboard from "./pages/client/ClientDashboard";
 import MyBlog from "./pages/client/MyBlog";
 import Contact from "./components/LandingComponents/Contact";
 import ContactList from "./pages/Contacts/ContactList";
+import ContactUs from "./pages/ContactUs";
+import Help from "./pages/Help";
 
 
 
@@ -61,6 +63,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/About" element={<About />} />
+        <Route path="/contactus" element={<ContactUs/>} />
+        <Route path="/help" element={<Help/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
        

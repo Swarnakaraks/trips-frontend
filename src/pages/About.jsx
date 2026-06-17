@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Footer from '../components/LandingComponents/Footer'
 import TrustedCompanies from "../components/LandingComponents/TrustedCompanies";
-import Navbar from "../components/Navbar";
+import PageNavbar from "../components/PageNavbar";
 
 const galleryImages = [
   "/about1.jpg",
@@ -93,7 +93,7 @@ const cards = [
 const AboutUs = () => {
   return (
     <section className="relative overflow-hidden pt-2 mt-20">
-      <Navbar/>
+      <PageNavbar/>
 
     {/* <div className="absolute -top-50 -left-50 h-200 w-200 rotate-120 rounded-full bg-linear-to-b from-blue-50/5 via-blue-100/40 to-blue-300 -z-10 blur-2xl"/>
     <div className="absolute -top-50 -right-50 h-200 w-200 rotate-240 rounded-full bg-linear-to-b from-blue-50/5 via-blue-100/40 to-blue-300 -z-10 blur-2xl"/> */}
@@ -156,7 +156,7 @@ const AboutUs = () => {
 
   
         <div className=" grid items-center gap-12 lg:grid-cols-2 p-10 md:p-20">
-          {/* video */}
+          
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -280,8 +280,8 @@ const AboutUs = () => {
 
         {/* LEFT SIDE */}
         <div
-          className="relative overflow-hidden bg-cover bg-center p-6 sm:p-8 lg:p-12 min-h-[250px] sm:min-h-[350px]"
-          style={{ backgroundImage: "url('/trip.jpg')" }}
+          className="relative overflow-hidden bg-cover bg-center p-6 sm:p-8 lg:p-12 min-h-62.5 sm:min-h-87.5"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1476522465286-b5b94c729d2a?q=80&w=1458&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
         >
           {/* overlay */}
           <div className="absolute inset-0 bg-black/40" />

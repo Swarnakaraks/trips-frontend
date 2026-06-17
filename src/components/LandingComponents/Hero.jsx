@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import {motion} from "framer-motion";
 
 const slides = [
   {
@@ -30,6 +31,14 @@ export default function TripHero() {
   const [current, setCurrent] = useState(0);
   const active = slides[current];
 
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  }, 6000);
+
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <section className="relative h-[60vh] md:h-screen overflow-hidden flex items-center justify-center text-white">
@@ -44,7 +53,9 @@ export default function TripHero() {
     <img
       src={s.image}
       alt={s.title}
-      className="h-full w-full object-cover"
+      className={`h-full w-full object-cover transition-all duration-1000 ease-in-out ${
+  current === i ? "scale-110" : "scale-100"
+}`}
       loading="lazy"
     />
   </div>
@@ -55,29 +66,42 @@ export default function TripHero() {
 
       {/* CONTENT */}
       <div className="relative z-20 text-center px-6">
-        <h1 key={active.id}
-          className="text-4xl md:text-7xl font-bold"
-        >
-          {active.title}
-          <span className="block text-orange-400">{active.script}</span>
-        </h1>
+  <motion.h1
+    key={active.id}
+    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.6 }}
+    className="text-4xl md:text-7xl font-bold"
+  >
+    {active.title}
+    <span className="block text-orange-400">{active.script}</span>
+  </motion.h1>
 
-        <p key={active.desc}
-          className="mt-5 text-white/70 max-w-xl mx-auto"
-        >
-          {active.desc}
-        </p>
+  <motion.p
+    key={active.desc}
+    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.7, delay: 0.1 }}
+    className="mt-5 text-white/70 max-w-xl mx-auto"
+  >
+    {active.desc}
+  </motion.p>
 
-        <div className="mt-10">
-          <Link
-            to="/login"
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-linear-to-r from-blue-600 to-cyan-500 hover:scale-105 transition-transform"
-          >
-            Start Journey
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
-      </div>
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+    className="mt-10"
+  >
+    <Link
+      to="/login"
+      className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-linear-to-r from-blue-600 to-cyan-500 hover:scale-105 transition-transform"
+    >
+      Start Journey
+      <ArrowRight className="w-5 h-5" />
+    </Link>
+  </motion.div>
+</div>
 
       {/* DOTS (NEW) */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
