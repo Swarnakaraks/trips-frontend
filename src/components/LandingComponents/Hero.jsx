@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -27,69 +26,52 @@ const slides = [
   },
 ];
 
-const AUTOPLAY = 6000;
-
 export default function TripHero() {
   const [current, setCurrent] = useState(0);
   const active = slides[current];
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setCurrent((p) => (p + 1) % slides.length);
-    }, AUTOPLAY);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <section className="relative h-[60vh] md:h-screen overflow-hidden flex items-center justify-center text-white">
       {/* BACKGROUND */}
-      {slides.map((s, i) => (
-        <div
-          key={s.id}
-          className="absolute inset-0 transition-opacity duration-1000"
-          style={{
-            opacity: i === current ? 1 : 0,
-            zIndex: i === current ? 1 : 0,
-          }}
-        >
-          <img
-            src={s.image}
-            className="h-full w-full object-cover"
-            loading="eager"
-          />
-        </div>
-      ))}
+{slides.map((s, i) => (
+  <div
+    key={s.id}
+    className={`absolute inset-0 transition-opacity duration-1000 ${
+      current === i ? "opacity-100" : "opacity-0"
+    }`}
+  >
+    <img
+      src={s.image}
+      alt={s.title}
+      className="h-full w-full object-cover"
+      loading="lazy"
+    />
+  </div>
+))}
 
       {/* overlay */}
       <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent z-10" />
 
       {/* CONTENT */}
       <div className="relative z-20 text-center px-6">
-        <motion.h1
-          key={active.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <h1 key={active.id}
           className="text-4xl md:text-7xl font-bold"
         >
           {active.title}
           <span className="block text-orange-400">{active.script}</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          key={active.desc}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        <p key={active.desc}
           className="mt-5 text-white/70 max-w-xl mx-auto"
         >
           {active.desc}
-        </motion.p>
+        </p>
 
         <div className="mt-10">
           <Link
             to="/login"
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-linear-to-r from-blue-600 to-cyan-500 hover:scale-105 transition-transform"
           >
             Start Journey
             <ArrowRight className="w-5 h-5" />

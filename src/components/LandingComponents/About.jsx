@@ -1,40 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useSpring, useMotionValue } from "framer-motion";
 import { Users, Star, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AvatarGroup, AvatarGroupCount } from "@/components/ui/avatar";
-
-const CountUp = ({ value }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const motionValue = useMotionValue(0);
-  const spring = useSpring(motionValue, {
-    stiffness: 100,
-    damping: 30,
-  });
-
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (isInView) motionValue.set(value);
-  }, [isInView, value, motionValue]);
-
-  useEffect(() => {
-    const unsubscribe = spring.on("change", (latest) => {
-      setDisplay(Math.floor(latest));
-    });
-
-    return () => unsubscribe();
-  }, [spring]);
-
-  return (
-    <span ref={ref} className="will-change-transform">
-      {display.toLocaleString()}+
-    </span>
-  );
-};
 
 const About = () => {
   return (
@@ -69,18 +37,14 @@ const About = () => {
             About Company
           </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
+          <h1
             className="text-4xl lg:text-5xl font-black leading-tight text-gray-900"
           >
             We're Number One Travel {""}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400 mt-2">
               Adventure Company
             </span>
-          </motion.h1>
+          </h1>
 
           <p className="text-gray-500 leading-7 mt-4 max-w-xl">
             We create unforgettable travel experiences with premium service and
@@ -111,8 +75,7 @@ const About = () => {
                   
                   <Users className="text-blue-600" />
                   <h1 className="text-3xl font-black text-gray-900">
-                    
-                    <CountUp value={8376} />
+                    8376
                   </h1>
                 </div>
                 <p className="text-gray-500 text-center">
@@ -126,8 +89,7 @@ const About = () => {
                   
                   <Star className="text-orange-500" />
                   <h1 className="text-3xl font-black text-gray-900">
-                    
-                    <CountUp value={6519} />
+                    6519
                   </h1>
                 </div>
                 <p className="text-gray-500 text-center">Active Clients</p>

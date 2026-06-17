@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import FeaturesCards from "../Common/FeaturesCards";
 import { Headphones, PlaneTakeoff, ShieldCheck, MapPinned } from "lucide-react";
 
@@ -36,12 +35,7 @@ const Features = () => {
   ];
   return (
     <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24 px-5 sm:px-8 lg:px-20 xl:px-40">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5 }}
-        className="text-center"
+      <div className="text-center"
       >
         <p className="text-orange-500 font-semibold uppercase tracking-[5px] mb-4">
           Travel Smarter
@@ -57,7 +51,7 @@ const Features = () => {
         <p className="text-gray-500 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto mb-12">
           Experience seamless bookings and unforgettable adventures.
         </p>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {featuresData.map((feature, index) => (

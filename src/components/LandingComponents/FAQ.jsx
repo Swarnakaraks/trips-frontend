@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -50,11 +49,8 @@ const FAQ = () => {
 
             {/* LEFT */}
 
-            <motion.div
-              initial={{opacity:0,x:-40}}
-              whileInView={{opacity:1,x:0}}
-              viewport={{once:true}}
-              transition={{duration:.7}}
+            <div
+             
             >
 
                 <span className="uppercase tracking-[5px] text-orange-500 font-semibold mb-4">
@@ -128,15 +124,12 @@ const FAQ = () => {
 
               </div>
 
-            </motion.div>
+            </div>
 
             {/* RIGHT */}
 
-            <motion.div
-              initial={{opacity:0,y:40}}
-              whileInView={{opacity:1,y:0}}
-              viewport={{once:true}}
-              transition={{duration:.7}}
+            <div
+            
             >
 
               <div className="space-y-5">
@@ -185,7 +178,7 @@ const FAQ = () => {
 
               </div>
 
-            </motion.div>
+            </div>
 
           </div>
 

@@ -358,10 +358,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 15 },
-  show: { opacity: 1, y: 0 },
-};
+
 
 const TravelPackages = () => {
   return (
@@ -409,11 +406,9 @@ const TravelPackages = () => {
               className="grid md:grid-cols-2 xl:grid-cols-3 gap-10"
             >
               {items.map((trip, i) => (
-                <motion.div
+                <div
                   key={i}
-                  variants={cardVariants}
-                  whileHover={{ y: -10 }}
-                  transition={{ duration: 0.3 }}
+                  
                   className="group"
                 >
                   <div className="relative">
@@ -474,7 +469,7 @@ const TravelPackages = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </motion.div>
           </TabsContent>

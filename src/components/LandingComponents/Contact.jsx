@@ -8,7 +8,6 @@ import {
   Plane,
   PhoneCall
 } from 'lucide-react'
-import { motion } from 'framer-motion'
 import api from '@/api/axios'
 import { toast } from 'sonner'
 
@@ -69,11 +68,8 @@ export default function Contact() {
 
           {/* LEFT DESIGN SIDE */}
 
-          <motion.div
-            initial={{opacity:0,x:-50}}
-            whileInView={{opacity:1,x:0}}
-            transition={{duration:.8}}
-            viewport={{ once: true }}
+          <div
+        
             className="space-y-8"
           >
 
@@ -145,16 +141,13 @@ export default function Contact() {
 
 </div>
 
-          </motion.div>
+          </div>
 
 
           {/* FORM SIDE */}
 
-          <motion.div
-            initial={{opacity:0,y:60}}
-            whileInView={{opacity:1,y:0}}
-            transition={{duration:.8}}
-            viewport={{ once: true }}
+          <div
+            
             className="relative"
           >
 
@@ -300,7 +293,7 @@ export default function Contact() {
 
             </div>
 
-          </motion.div>
+          </div>
 
         </div>
 
