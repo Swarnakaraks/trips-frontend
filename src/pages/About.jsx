@@ -11,9 +11,9 @@ import {
   BadgeCheck,
   Award,
 } from "lucide-react";
-import PageNavbar from "../components/PageNavbar";
 import Footer from '../components/LandingComponents/Footer'
 import TrustedCompanies from "../components/LandingComponents/TrustedCompanies";
+import Navbar from "../components/Navbar";
 
 const galleryImages = [
   "/about1.jpg",
@@ -92,8 +92,8 @@ const cards = [
 
 const AboutUs = () => {
   return (
-    <section className="relative overflow-hidden pt-2">
-      <PageNavbar/>
+    <section className="relative overflow-hidden pt-2 mt-20">
+      <Navbar/>
 
     {/* <div className="absolute -top-50 -left-50 h-200 w-200 rotate-120 rounded-full bg-linear-to-b from-blue-50/5 via-blue-100/40 to-blue-300 -z-10 blur-2xl"/>
     <div className="absolute -top-50 -right-50 h-200 w-200 rotate-240 rounded-full bg-linear-to-b from-blue-50/5 via-blue-100/40 to-blue-300 -z-10 blur-2xl"/> */}
