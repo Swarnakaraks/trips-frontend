@@ -4,29 +4,25 @@ import { Star, Quote } from "lucide-react";
 const testimonials = [
   {
     name: "Sujan Sharma",
-    img: "/profile1.jpg",
+    img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     text: "Best Nepal travel experience ever. Everything was perfectly organized and smooth.",
   },
   {
     name: "Anita KC",
-    img: "/profile2.jpg",
+    img: "https://images.unsplash.com/photo-1648123367577-661eee58334b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     text: "Super smooth booking process and excellent support throughout the journey.",
   },
   {
-    name: "Kritika Katwal",
-    img: "/profile3.jpg",
+    name: "Krishna Katwal",
+    img: "https://images.unsplash.com/photo-1572957946666-2e386e1e913d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     text: "Everest trek was life-changing. Support team was amazing from start to end.",
   },
   {
     name: "Anisha Rai",
-    img: "/profile4.jpg",
+    img: "https://images.unsplash.com/photo-1580632969236-0c96e97d48fe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     text: "Perfect family tour experience in Chitwan. Kids enjoyed a lot!",
   },
-  {
-    name: "Priya Gurung",
-    img: "/profile5.jpg",
-    text: "Best travel agency experience I've had so far. Truly professional service.",
-  },
+
 ];
 
 const Testimonial = () => {
