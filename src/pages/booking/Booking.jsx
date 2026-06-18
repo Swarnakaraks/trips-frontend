@@ -59,6 +59,54 @@ return (
 
 return (
   <main className="min-h-screen">
+     {/* Stats */}
+<div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-5">
+
+  {/* Total */}
+  <div className="relative overflow-hidden rounded-2xl bg-white border border-blue-100 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+    <div className="absolute top-0 left-0 h-1 w-full bg-blue-500" />
+    <p className="text-xs text-center uppercase tracking-wider text-blue-500 font-semibold">
+      Total
+    </p>
+    <h2 className="text-3xl text-center font-extrabold text-slate-800 mt-2">
+      {data?.length || 0}
+    </h2>
+  </div>
+
+  {/* Confirmed */}
+  <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-emerald-50 to-white border border-emerald-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+    <div className="absolute top-0 left-0 h-1 w-full bg-emerald-500" />
+    <p className="text-xs text-center uppercase tracking-wider text-emerald-600 font-semibold">
+      Confirmed
+    </p>
+    <h2 className="text-3xl text-center font-extrabold text-emerald-700 mt-2">
+      {data?.filter((item) => item.status === "confirmed").length}
+    </h2>
+  </div>
+
+  {/* Pending */}
+  <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-orange-50 to-white border border-orange-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+    <div className="absolute top-0 left-0 h-1 w-full bg-orange-400" />
+    <p className="text-xs text-center uppercase tracking-wider text-orange-500 font-semibold">
+      Pending
+    </p>
+    <h2 className="text-3xl text-center font-extrabold text-orange-600 mt-2">
+      {data?.filter((item) => item.status === "pending").length}
+    </h2>
+  </div>
+
+  {/* Cancelled */}
+  <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-rose-50 to-white border border-rose-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+    <div className="absolute top-0 left-0 h-1 w-full bg-rose-500" />
+    <p className="text-xs text-center uppercase tracking-wider text-rose-500 font-semibold">
+      Cancelled
+    </p>
+    <h2 className="text-3xl text-center font-extrabold text-rose-600 mt-2">
+      {data?.filter((item) => item.status === "cancelled").length}
+    </h2>
+  </div>
+
+</div>
   <div className="mx-auto max-w-7xl">
     
     <Card className="overflow-hidden rounded-3xl border-0 bg-white/80 shadow-2xl backdrop-blur-xl">
@@ -88,55 +136,7 @@ return (
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            
-            <div className="rounded-2xl bg-white/10 px-5 py-4 text-center backdrop-blur-md">
-              <p className="text-xs uppercase tracking-wide text-blue-100">
-                Total
-              </p>
-
-              <h2 className="text-2xl font-bold">
-                {data?.length || 0}
-              </h2>
-            </div>
-
-            <div className="rounded-2xl bg-white/10 px-5 py-4 text-center backdrop-blur-md">
-              <p className="text-xs uppercase tracking-wide text-blue-100">
-                Confirmed
-              </p>
-
-              <h2 className="text-2xl font-bold">
-                {
-                  data?.filter((item) => item.status === "confirmed").length
-                }
-              </h2>
-            </div>
-
-            <div className="rounded-2xl bg-white/10 px-5 py-4 text-center backdrop-blur-md">
-              <p className="text-xs uppercase tracking-wide text-blue-100">
-                Pending
-              </p>
-
-              <h2 className="text-2xl font-bold">
-                {
-                  data?.filter((item) => item.status === "pending").length
-                }
-              </h2>
-            </div>
-
-            <div className="rounded-2xl bg-white/10 px-5 py-4 text-center backdrop-blur-md">
-              <p className="text-xs uppercase tracking-wide text-blue-100">
-                Cancelled
-              </p>
-
-              <h2 className="text-2xl font-bold">
-                {
-                  data?.filter((item) => item.status === "cancelled").length
-                }
-              </h2>
-            </div>
-          </div>
+        
         </div>
       </CardHeader>
 

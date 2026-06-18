@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import {
   Calendar,
   CreditCard,
@@ -10,89 +10,61 @@ import {
   Plane,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import useApi from "@/hooks/useApi"
 
-const activities = [
-  {
-    id: 1,
-    type: "booking",
-    user: "Sarah Johnson",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    action: "booked a trip to",
-    target: "Paris, France",
-    time: "2 minutes ago",
-    icon: Calendar,
-    color: "text-blue-500 bg-blue-100 dark:bg-blue-900/30",
-  },
-  {
-    id: 2,
-    type: "payment",
-    user: "Michael Chen",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    action: "completed payment of",
-    target: "$4,180",
-    time: "15 minutes ago",
-    icon: CreditCard,
-    color: "text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30",
-  },
-  {
-    id: 3,
-    type: "review",
-    user: "Emily Davis",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-    action: "left a 5-star review for",
-    target: "Maldives Escape",
-    time: "1 hour ago",
-    icon: Star,
-    color: "text-amber-500 bg-amber-100 dark:bg-amber-900/30",
-  },
-  {
-    id: 4,
-    type: "message",
-    user: "James Wilson",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-    action: "sent a message about",
-    target: "Tokyo Adventure",
-    time: "2 hours ago",
-    icon: MessageSquare,
-    color: "text-purple-500 bg-purple-100 dark:bg-purple-900/30",
-  },
-  {
-    id: 5,
-    type: "signup",
-    user: "Anna Martinez",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
-    action: "created an account",
-    target: "",
-    time: "3 hours ago",
-    icon: UserPlus,
-    color: "text-cyan-500 bg-cyan-100 dark:bg-cyan-900/30",
-  },
-  {
-    id: 6,
-    type: "trip",
-    user: "David Lee",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-    action: "started their trip to",
-    target: "Bali, Indonesia",
-    time: "4 hours ago",
-    icon: Plane,
-    color: "text-indigo-500 bg-indigo-100 dark:bg-indigo-900/30",
-  },
-]
+
+const iconMap = {
+  booking: Calendar,
+  payment: CreditCard,
+  review: Star,
+  message: MessageSquare,
+  signup: UserPlus,
+  trip: Plane,
+}
+
+const colorMap = {
+  booking: "text-blue-500 bg-blue-100",
+  payment: "text-emerald-500 bg-emerald-100",
+  review: "text-amber-500 bg-amber-100",
+  message: "text-purple-500 bg-purple-100",
+  signup: "text-cyan-500 bg-cyan-100",
+  trip: "text-indigo-500 bg-indigo-100",
+}
 
 const Activity = () => {
+  const { data: bookings } = useApi("/booking")
+  const { data: trips } = useApi("/trips")
+
+  // convert BOOKINGS → activities
+  const bookingActivities =
+    bookings?.slice(0, 5).map((b) => ({
+      id: b._id,
+      type: "booking",
+      user: b.customerName,
+      avatar: "",
+      action: "booked a trip",
+      target: b.tripId?.title || "Unknown Trip",
+      time: new Date(b.bookingDate).toLocaleString(),
+    })) || []
+
+  // convert TRIPS → activities
+  const tripActivities =
+    trips?.slice(0, 3).map((t) => ({
+      id: t._id,
+      type: "trip",
+      user: "Admin",
+      avatar: "",
+      action: "created a new trip",
+      target: t.title,
+      time: new Date(t.createdAt || Date.now()).toLocaleString(),
+    })) || []
+
+  const activities = [...bookingActivities, ...tripActivities]
+    .sort((a, b) => new Date(b.time) - new Date(a.time))
+    .slice(0, 6)
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.8 }}
-    >
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
       <Card className="border-0 shadow-lg h-full p-5">
         <CardHeader>
           <CardTitle className="text-lg font-semibold">
@@ -101,48 +73,40 @@ const Activity = () => {
         </CardHeader>
 
         <CardContent className="p-0">
-          <div className="h-100 px-6">
-            <div className="space-y-4 pb-6">
-              {activities.map((activity, index) => (
+          <div className="space-y-4 px-6 pb-6">
+            {activities?.map((activity, index) => {
+              const Icon = iconMap[activity.type] || Calendar
+
+              return (
                 <motion.div
                   key={activity.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="flex items-start gap-3 group"
+                  className="flex items-start gap-3"
                 >
-                  <div className="relative">
-                    <Avatar className="w-9 h-9">
-                      <AvatarImage src={activity.avatar} />
-                      <AvatarFallback className="bg-linear-to-br from-blue-500 to-cyan-400 text-white text-xs">
-                        {activity.user
-                          .split(" ")
+                  
+                  <div
+                    className="w-9 h-9 rounded-full flex items-center justify-center bg-linear-to-br from-blue-500 to-cyan-400 text-white text-xs font-bold shadow-md"
+                  >
+                    {activity.user === "Admin"
+                      ? "A"
+                      : activity.user
+                          ?.split(" ")
                           .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-
-                    <div
-                      className={cn(
-                        "absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full flex items-center justify-center",
-                        activity.color
-                      )}
-                    >
-                      <activity.icon className="w-2.5 h-2.5" />
-                    </div>
+                          .join("")
+                          .toUpperCase()}
                   </div>
 
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1">
                     <p className="text-sm">
                       <span className="font-medium">{activity.user}</span>{" "}
                       <span className="text-muted-foreground">
                         {activity.action}
                       </span>{" "}
-                      {activity.target && (
-                        <span className="font-medium text-primary">
-                          {activity.target}
-                        </span>
-                      )}
+                      <span className="font-medium text-primary">
+                        {activity.target}
+                      </span>
                     </p>
 
                     <p className="text-xs text-muted-foreground mt-0.5">
@@ -150,8 +114,8 @@ const Activity = () => {
                     </p>
                   </div>
                 </motion.div>
-              ))}
-            </div>
+              )
+            })}
           </div>
         </CardContent>
       </Card>
@@ -159,4 +123,4 @@ const Activity = () => {
   )
 }
 
-export default Activity;
+export default Activity
