@@ -66,7 +66,7 @@ const AppSidebar = () => {
     { id: "blog", icon: BookOpen, label: "Blog", path: "/client/blogs" },
   ];
 
-  const menuItems = role === "Admin" ? adminMenuItems : clientMenuItems;
+  const menuItems = role === "admin" ? adminMenuItems : clientMenuItems;
 
   return (
     <Sidebar className="border-r">
