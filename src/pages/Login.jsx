@@ -53,8 +53,7 @@ const Login = () => {
             password: data.password
         }
         try{
-            const response = await api.post("/auth/login", Data);
-            console.log(response);  
+            const response = await api.post("/auth/login", Data); 
 
             if(response.status === 200){
                 toast.success("Login Successful!")
